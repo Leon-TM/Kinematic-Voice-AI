@@ -25,7 +25,7 @@
 ---
 
 ## 👥 The Team
-* **Leonardo Tronci** – *Team Leader & AI Architect* 📩 **Email:** Leo.Tronci@tiscali.it (o l'email che preferisci usare)
+* **Leonardo Tronci** – *Team Leader & AI Architect* 📩 **Email:** Leo.Tronci@tiscali.it 
 * **Prof. Tiziana Mori** – *Scientific Strategy & Clinical Validation Director*
 * **Massimiliano Tronci** – *Legal, Ethics & Environmental Advisor*
 
