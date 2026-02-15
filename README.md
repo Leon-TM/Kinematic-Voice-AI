@@ -7,7 +7,7 @@ Multimodal AI platform for neuro-health monitoring via non-invasive biomarkers.
 ![QR Code](./qr-code.png)  
 *Scan to view website*
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-brightgreen)](https://leon-tm.github.io/Cinematica-Voce-AI/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-brightgreen)](https://leon-tm.github.io/Kinematic-Voice-AI/)
 [![Hackathon](https://img.shields.io/badge/EP_PerMed-2026-blue)](https://eventornado.com/submission/kinematic-voice-ai-personalised-neuro-health-monitoring#idea)
 [![Mobile](https://img.shields.io/badge/📱-Fully_Responsive-success)](https://leon-tm.github.io/Cinematica-Voce-AI/)
 
