@@ -3,36 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vital-Tronic | Scientific Research</title>
+    <title>Vital-Tronic | Scientific Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #1e1e1e; margin: 0; padding: 0; background: #f4f7f6; }
         .header { background: #1e1e1e; color: #ffffff; padding: 40px 20px; text-align: center; border-bottom: 4px solid #0AE0E0; }
         .container { max-width: 800px; margin: 40px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 25px rgba(0,0,0,0.1); }
-        .btn { background: #0AE0E0; color: #000; padding: 18px 35px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; margin: 20px 0; transition: 0.3s; text-align: center; }
-        .btn:hover { background: #08c7c7; transform: translateY(-2px); }
+        .btn-group { text-align: center; margin-top: 20px; }
+        .btn { background: #0AE0E0; color: #000; padding: 18px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; display: block; margin: 15px auto; width: 85%; transition: 0.3s; text-align: center; }
+        .btn-outline { background: #ffffff; border: 2px solid #0AE0E0; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(10, 224, 224, 0.3); }
+        .section-title { color: #1e1e1e; border-left: 4px solid #0AE0E0; padding-left: 15px; margin-top: 30px; font-family: 'Outfit', sans-serif; }
         .ip-note { font-size: 0.85em; color: #666; background: #f9f9f9; padding: 15px; border-left: 3px solid #0AE0E0; margin-top: 30px; }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Scientific Validation Hub</h1>
-        <p>EP PerMed Hackathon 2026 | Vital-Tronic</p>
+        <h1>Vital-Tronic Scientific Hub</h1>
+        <p>EP PerMed Hackathon 2026 | Technical & Clinical Evidence</p>
     </div>
     <div class="container">
-        <h2>Technical White Paper</h2>
-        <p>Download the official documentation regarding <strong>Kinematic Vocal Biomarkers</strong> and <strong>Stochastic Resonance</strong> methodology.</p>
         
-        <div style="text-align: center;">
+        <h3 class="section-title">1. Technical White Paper</h3>
+        <p>Official documentation regarding <strong>Kinematic Vocal Biomarkers</strong> and <strong>Stochastic Resonance</strong> methodology.</p>
+        <div class="btn-group">
             <a href="./paper%20Kinematic%20Voice%20AI-TRONCI.pdf" class="btn" download>DOWNLOAD WHITE PAPER (PDF)</a>
         </div>
 
-        <div class="ip-note">
-            <strong>Intellectual Property Notice:</strong> This research and its underlying methodologies are the proprietary property of <strong>Leonardo Tronci</strong>. All rights reserved.
+        <h3 class="section-title">2. Clinical Validation Survey</h3>
+        <p>Analysis of clinical requirements and preliminary feedback from the <strong>Movere in Salus</strong> medical network.</p>
+        <div class="btn-group">
+            <a href="./clinical%20requirement.pdf" class="btn btn-outline" download>DOWNLOAD CLINICAL REQUIREMENT (PDF)</a>
         </div>
 
-        <div style="margin-top: 30px; font-weight: bold;">
-            Partners: Movere in Salus | ARKA | Rosa Roja
+        <div class="ip-note">
+            <strong>Intellectual Property Notice:</strong> All research, algorithms, and methodologies are the proprietary property of <strong>Leonardo Tronci</strong>. All rights reserved. 
+            <br><br>
+            <strong>Partners:</strong> Movere in Salus | ARKA | Rosa Roja
+            <br>
+            <strong>Contact:</strong> Leo.Tronci@tiscali.it
         </div>
     </div>
 </body>
