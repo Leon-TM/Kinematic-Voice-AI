@@ -38,9 +38,10 @@
 
 ---
 
-## 🤝 Partners
-* **Movere in Salus** – *Startup Partner & Clinical Ecosystem Support*
-
+## 🤝 Partners & Global Impact
+* **Movere in Salus** – *Startup Partner & Clinical Ecosystem Support (Italy)*
+* **ARKA Eventi Culturali** – *International Cooperation & Health Equity Partner*
+* **Rosa Roja** – *odv, Community Outreach & Digital Inclusion Partner (Caribbean Region)*
 ---
 <p align="center">
   <i>Developed by Team Kinematic for the EP PerMed Hackathon 2026. All rights reserved.</i>
