@@ -44,9 +44,23 @@
 * **Rosa Roja** – *odv, Community Outreach & Digital Inclusion Partner (Caribbean Region)*
 ---
 ---
-### 🔬 Scientific Hub & IP
-Official documentation and kinematic validation:
-👉 [**Access Research Center**](https://leon-tm.github.io/Kinematic-Voice-AI/research)
+## 🔬 Scientific & Clinical Research Hub
+We believe in transparency and evidence-based innovation. Access our dedicated research page:
+👉 [**EXPLORE THE RESEARCH HUB**](https://leon-tm.github.io/Kinematic-Voice-AI/research)
+
+### What you will find there:
+1. **Technical White Paper:** Deep dive into Stochastic Resonance and Kinematic Biomarkers (92-95% Accuracy).
+2. **Clinical Requirement Report:** Insights and UX framework developed with the **Movere in Salus** medical network.
+3. **Intellectual Property:** Official IP notice by Leonardo Tronci.
+
+---
+
+## 🛠 Tech Stack
+* **Core:** Edge-AI (Local Processing)
+* **Science:** Stochastic Resonance Signal Enhancement
+* **Privacy:** Privacy-by-Design (GDPR Compliant)
+
+**Contact:** Leo.Tronci@tiscali.it
 ---
 
 <p align="center">
