@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kinematic Voice AI - RAI Demo</title>
+
+  <style>
+    :root {
+      --blue: #00d4ff;
+      --green: #00ff88;
+      --dark: #050a15;
+      --card: #111b2d;
+      --white: #ffffff;
+      --gray: #aab4c3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: radial-gradient(circle at top, #12345a 0%, var(--dark) 55%, #020617 100%);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 22px;
+    }
+
+    header {
+      padding: 35px 10px;
+    }
+
+    .logo {
+      width: 120px;
+      border-radius: 24px;
+      margin-bottom: 18px;
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.75);
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 7vw, 4.8rem);
+      margin: 10px 0;
+      text-shadow: 0 0 24px rgba(0, 212, 255, 0.9);
+    }
+
+    .claim {
+      color: var(--blue);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .intro {
+      color: var(--gray);
+      max-width: 850px;
+      margin: auto;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .badge-row {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid rgba(0, 212, 255, 0.5);
+      color: var(--blue);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      background: rgba(0, 212, 255, 0.08);
+      box-shadow: 0 0 18px rgba(0, 212, 255, 0.25);
+    }
+
+    section {
+      margin: 34px 0;
+    }
+
+    .panel {
+      background: linear-gradient(145deg, rgba(17, 27, 45, 0.96), rgba(5, 10, 21, 0.96));
+      border: 1px solid rgba(0, 212, 255, 0.38);
+      border-radius: 30px;
+      padding: 26px;
+      box-shadow: 0 0 35px rgba(0, 212, 255, 0.18);
+    }
+
+    .section-title {
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: var(--gray);
+      max-width: 760px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 212, 255, 0.45);
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+    }
+
+    .video-placeholder {
+      max-width: 720px;
+    }
+
+    .play-circle {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      border: 2px solid var(--blue);
+      font-size: 2rem;
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.65);
+      animation: pulse 1.4s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); opacity: 0.75; }
+      to { transform: scale(1.08); opacity: 1; }
+    }
+
+    .figma-frame {
+      width: 100%;
+      height: 520px;
+      border: 1px solid rgba(0, 212, 255, 0.45);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #020617;
+    }
+
+    .figma-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(17, 27, 45, 0.9);
+      border: 1px solid rgba(0, 212, 255, 0.35);
+      border-radius: 24px;
+      padding: 24px;
+      min-height: 230px;
+      text-align: left;
+    }
+
+    .card-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      border: 1px solid var(--blue);
+      margin-bottom: 16px;
+      font-weight: 900;
+      background: rgba(0, 212, 255, 0.12);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .simulator {
+      min-height: 430px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn {
+      margin-top: 20px;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      border: none;
+      color: #00111a;
+      padding: 16px 38px;
+      border-radius: 999px;
+      font-weight: 900;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 26px rgba(0, 212, 255, 0.65);
+    }
+
+    .voice-animation {
+      margin: 24px auto;
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      gap: 8px;
+      height: 90px;
+    }
+
+    .bar {
+      width: 12px;
+      border-radius: 999px;
+      background: var(--blue);
+      animation: waveMove 0.8s infinite ease-in-out alternate;
+      box-shadow: 0 0 14px var(--blue);
+    }
+
+    .bar:nth-child(1) { height: 25px; animation-delay: 0s; }
+    .bar:nth-child(2) { height: 48px; animation-delay: 0.1s; }
+    .bar:nth-child(3) { height: 70px; animation-delay: 0.2s; }
+    .bar:nth-child(4) { height: 38px; animation-delay: 0.3s; }
+    .bar:nth-child(5) { height: 62px; animation-delay: 0.4s; }
+    .bar:nth-child(6) { height: 32px; animation-delay: 0.5s; }
+
+    @keyframes waveMove {
+      from { transform: scaleY(0.45); opacity: 0.55; }
+      to { transform: scaleY(1.25); opacity: 1; }
+    }
+
+    .loading {
+      width: 88%;
+      max-width: 440px;
+      height: 12px;
+      background: #1f2937;
+      border-radius: 999px;
+      margin: 22px auto;
+      overflow: hidden;
+    }
+
+    .loading-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      animation: loading 5s linear forwards;
+    }
+
+    @keyframes loading {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+
+    .result {
+      display: none;
+      text-align: left;
+      max-width: 760px;
+      margin: auto;
+      padding: 24px;
+      border-radius: 22px;
+      background: rgba(0, 255, 136, 0.09);
+      border-left: 5px solid var(--green);
+    }
+
+    .result h3 {
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .result p {
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .small-note {
+      color: var(--gray);
+      font-size: 0.92rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+
+    footer {
+      margin-top: 42px;
+      padding: 30px 18px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      color: var(--gray);
+    }
+
+    footer strong {
+      color: var(--white);
+    }
+
+    @media (max-width: 850px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .figma-frame {
+        height: 420px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+      <img 
+        src="https://raw.githubusercontent.com/Leon-TM/Kinematic-Voice-AI/main/logo%20Kinematic.jpg" 
+        class="logo" 
+        alt="Kinematic Voice AI Logo"
+      >
+
+      <h1>Kinematic Voice AI</h1>
+
+      <p class="claim">
+        La voce diventa dato, emozione e movimento digitale.
+      </p>
+
+      <p class="intro">
+        Demo interattiva del prototipo sviluppato da Leonardo Tronci:
+        una tecnologia basata su analisi vocale, Edge AI e biomarcatori cinematici
+        per mostrare come uno smartphone possa trasformarsi in uno strumento intelligente
+        di ascolto, interpretazione e risposta digitale.
+      </p>
+
+      <div class="badge-row">
+        <span class="badge">Oostende Winner</span>
+        <span class="badge">RAI Demo Integration</span>
+        <span class="badge">Edge AI Prototype</span>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>Video Demo</h2>
+          <p>
+            Sezione pensata per mostrare il video ufficiale del prototipo:
+            voce, analisi, avatar e risposta sincronizzata.
+          </p>
+        </div>
+
+        <div class="video-frame">
+          <div class="video-placeholder">
+            <div class="play-circle">▶</div>
+            <h2>Demo Video Placeholder</h2>
+            <p>
+              Qui potrai inserire il video demo RAI caricando un file
+              <strong>demo.mp4</strong> nella stessa cartella oppure un link YouTube.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>Anteprima Figma</h2>
+          <p>
+            Integrazione della schermata/app prototype da Figma. Se non appare,
+            apri Figma e imposta la condivisione su “Anyone with the link”.
+          </p>
+        </div>
+
+        <div class="figma-frame">
+          <iframe 
+            allowfullscreen
+            src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/AwptSpaprDtXriytuSEfdg/Vital-Tronic-App--Copy-?node-id=0-1&p=f">
+          </iframe>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>Come funziona sullo smartphone</h2>
+          <p>
+            Il processo è pensato per essere semplice: la voce entra dal microfono,
+            viene analizzata localmente e produce una risposta digitale immediata.
+          </p>
+        </div>
+
+        <div class="process-grid">
+
+          <article class="card">
+            <div class="card-number">01</div>
+            <h3>Voice Input Analysis</h3>
+            <p>
+              L’IA cattura le frequenze vocali e osserva micro-variazioni di tono,
+              ritmo, intensità e stabilità del segnale.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">02</div>
+            <h3>Edge AI Processing</h3>
+            <p>
+              L’elaborazione avviene direttamente sul dispositivo, riducendo i tempi
+              di risposta e rafforzando il principio privacy-by-design.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">03</div>
+            <h3>Kinematic Output</h3>
+            <p>
+              Il profilo vocale viene tradotto in movimento: l’avatar reagisce,
+              cambia ritmo ed espressione, creando interazione empatica.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="panel simulator">
+
+        <div id="startState">
+          <div class="section-title">
+            <h2>Simulazione Live</h2>
+            <p>
+              Premi il pulsante per avviare una demo guidata. Il browser potrà
+              chiedere il consenso per usare il microfono.
+            </p>
+          </div>
+
+          <button class="btn" onclick="startDemo()">AVVIA DEMO VOCALE</button>
+        </div>
+
+        <div id="listeningState" style="display:none;">
+          <h2 style="color: var(--blue);">Ascolto e analisi in corso...</h2>
+
+          <div class="voice-animation">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+
+          <p>
+            Il sistema sta simulando la lettura del segnale vocale:
+            frequenza, stabilità, ritmo e intensità.
+          </p>
+
+          <div class="loading">
+            <div class="loading-fill"></div>
+          </div>
+        </div>
+
+        <div id="resultState" class="result">
+          <h3>🧠 Output AI della simulazione</h3>
+
+          <p>
+            Il prototipo ha generato un profilo vocale dinamico basato su variazioni
+            di frequenza, ritmo e intensità. Il sistema può trasformare questi dati
+            in una risposta visiva e in un movimento sincronizzato dell’avatar.
+          </p>
+
+          <p>
+            <strong>Output cinematico:</strong> avatar reattivo, ritmo adattivo,
+            feedback visivo e interazione empatica.
+          </p>
+
+          <p>
+            <strong>Potenziale applicativo:</strong> benessere digitale, educazione,
+            assistenza, monitoraggio vocale e interfacce inclusive.
+          </p>
+
+          <p class="small-note">
+            Nota: questa demo è una simulazione tecnologica e non costituisce diagnosi medica.
+            Serve a dimostrare il funzionamento del prototipo e il potenziale della piattaforma.
+          </p>
+
+          <button class="btn" onclick="resetDemo()">RIPETI DEMO</button>
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer>
+      <p>
+        <strong>© 2026 Progetto EmoPet - Ideato e Sviluppato da Leonardo Tronci</strong>
+      </p>
+      <p>Kinematic Voice AI | Technology Showcase | RAI Demo Integration</p>
+      <div class="badge">Oosende 2026 Global Tech Competition</div>
+    </footer>
+
+  </div>
+
+  <script>
+    async function startDemo() {
+      document.getElementById("startState").style.display = "none";
+      document.getElementById("listeningState").style.display = "block";
+      document.getElementById("resultState").style.display = "none";
+
+      speakText("Demo avviata. Inizio campionamento vocale. Analisi delle frequenze e del profilo cinematico in corso.");
+
+      try {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          setTimeout(() => {
+            stream.getTracks().forEach(track => track.stop());
+          }, 4500);
+        }
+      } catch (error) {
+        console.log("Microphone access not available or not allowed.");
+      }
+
+      setTimeout(() => {
+        document.getElementById("listeningState").style.display = "none";
+        document.getElementById("resultState").style.display = "block";
+
+        speakText("Analisi completata. Profilo vocale dinamico generato. Avatar pronto alla risposta sincronizzata.");
+      }, 5200);
+    }
+
+    function resetDemo() {
+      document.getElementById("startState").style.display = "block";
+      document.getElementById("listeningState").style.display = "none";
+      document.getElementById("resultState").style.display = "none";
+    }
+
+    function speakText(text) {
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+        const message = new SpeechSynthesisUtterance(text);
+        message.lang = "it-IT";
+        message.rate = 0.95;
+        window.speechSynthesis.speak(message);
+      }
+    }
+  </script>
+
+</body>
+</html>
