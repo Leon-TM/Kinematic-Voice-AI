@@ -573,7 +573,7 @@
       document.getElementById("listeningState").style.display = "block";
       document.getElementById("resultState").style.display = "none";
 
-      speakText("Demo avviata. Inizio campionamento vocale. Analisi delle frequenze e del profilo cinematico in corso.");
+      speakText("Demo avviata. Avvicina il telefono alla bocca e pronuncia una vocale, per esempio ah. Il sistema sta simulando il campionamento vocale e l'analisi delle frequenze.");
 
       try {
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -591,7 +591,7 @@
         document.getElementById("resultState").style.display = "block";
 
         speakText("Analisi completata. Profilo vocale dinamico generato. Avatar pronto alla risposta sincronizzata.");
-      }, 5200);
+      }, 6500);
     }
 
     function resetDemo() {
