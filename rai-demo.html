@@ -129,30 +129,35 @@
       box-shadow: 0 0 26px rgba(0, 212, 255, 0.14);
     }
 
-    .scenario-card img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      display: block;
-    }
+   .scenario-single {
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  background: rgba(17, 27, 45, 0.95);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+}
 
-    .scenario-caption {
-      padding: 26px;
-      text-align: left;
-    }
+.scenario-single img {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+}
 
-    .scenario-caption h3 {
-      color: var(--blue);
-      font-size: 1.6rem;
-      margin-bottom: 8px;
-    }
+.scenario-text {
+  padding: 28px;
+}
 
-    .scenario-caption p {
-      color: var(--white);
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
+.scenario-text h3 {
+  color: var(--blue);
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
 
+.scenario-text p {
+  color: var(--white);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
     .fade-in {
       opacity: 0;
       transform: translateY(28px);
@@ -340,17 +345,6 @@
         grid-template-columns: 1fr;
       }
 
-      .scenario-card {
-        grid-template-columns: 1fr;
-      }
-
-      .scenario-card img {
-        height: 220px;
-      }
-
-      .scenario-caption {
-        text-align: center;
-      }
 
       .panel {
         padding: 20px;
