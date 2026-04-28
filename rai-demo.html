@@ -567,64 +567,28 @@
 
   </div>
 
-  async function startDemo() {
-      const statusText = document.querySelector("#listeningState h2");
-      const subText = document.querySelector("#listeningState p");
-      const loadingFill = document.querySelector(".loading-fill");
-      
-      document.getElementById("startState").style.display = "none";
-      document.getElementById("listeningState").style.display = "block";
-      document.getElementById("resultState").style.display = "none";
+<script>
+      // INCOLLA IL CODICE ESATTAMENTE QUI DENTRO
+      async function startDemo() {
+         // ... tutto il codice che hai messo sopra ...
+      }
 
-      // Reset barra di caricamento per ogni avvio
-      loadingFill.style.animation = 'none';
-      loadingFill.offsetHeight; 
-      loadingFill.style.animation = 'loading 12s linear forwards';
-
-      speakText("Sistema attivo. Leonardo, chiedi al tuo interlocutore di pronunciare la vocale A in modo costante per il campionamento.");
-
-      // --- FASE 1: ASCOLTO (6 SECONDI) ---
-      statusText.innerText = "🎤 ASCOLTO BIOMARCATORI...";
-      statusText.style.color = "#00ff88";
-
-      setTimeout(() => {
-        // --- FASE 2: ANALISI (6 SECONDI) ---
-        statusText.innerText = "🧠 ELABORAZIONE EDGE AI...";
-        statusText.style.color = "#00d4ff";
-        
-        const techMessages = [
-          "Isolamento frequenza fondamentale...",
-          "Analisi Jitter e Shimmer in corso...",
-          "Verifica stabilità pneumo-fonica...",
-          "Confronto pattern neuro-vocali...",
-          "Sincronizzazione dati cinematici...",
-          "Finalizzazione indice di stabilità..."
-        ];
-        
-        let i = 0;
-        const interval = setInterval(() => {
-          if(i < techMessages.length) {
-            subText.innerHTML = "<span style='color:var(--blue)'>➔</span> " + techMessages[i];
-            i++;
-          } else { clearInterval(interval); }
-        }, 1000); 
-
-      }, 6000);
-
-      // --- FASE 3: RISULTATO (AL SECONDO 12) ---
-      setTimeout(() => {
+      function resetDemo() {
+        document.getElementById("startState").style.display = "block";
         document.getElementById("listeningState").style.display = "none";
-        document.getElementById("resultState").style.display = "block";
-        
-        // CALCOLO NUMERO CASUALE tra 98.1 e 99.9
-        const precision = (Math.random() * (99.9 - 98.1) + 98.1).toFixed(1);
-        
-        document.querySelector("#resultState h3").innerHTML = 
-          "🧠 Output AI — Indice di Stabilità: <span style='color:#00ff88; font-size:1.3em; text-shadow: 0 0 10px #00ff88;'>" + precision + "%</span>";
+        document.getElementById("resultState").style.display = "none";
+      }
 
-        speakText("Analisi completata con successo. Indice di stabilità calcolato al " + precision + " percento. Parametri entro la norma clinica.");
-      }, 12000);
-    }
+      function speakText(text) {
+        if ("speechSynthesis" in window) {
+          window.speechSynthesis.cancel();
+          const message = new SpeechSynthesisUtterance(text);
+          message.lang = "it-IT";
+          message.rate = 0.95;
+          window.speechSynthesis.speak(message);
+        }
+      }
+    </script>
 
-</body>
+  </body>
 </html>
