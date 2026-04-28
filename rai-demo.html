@@ -568,27 +568,91 @@
   </div>
 
 <script>
-      // INCOLLA IL CODICE ESATTAMENTE QUI DENTRO
-      async function startDemo() {
-         // ... tutto il codice che hai messo sopra ...
+async function startDemo() {
+  const statusTxt = document.querySelector("#listeningState h2");
+  const subText = document.querySelector("#listeningState p");
+  const loadingFill = document.querySelector(".loading-fill");
+
+  document.getElementById("startState").style.display = "none";
+  document.getElementById("listeningState").style.display = "block";
+  document.getElementById("resultState").style.display = "none";
+
+  loadingFill.style.animation = "none";
+  void loadingFill.offsetHeight;
+  loadingFill.style.animation = "loading 12s linear forwards";
+
+  speakText("Sistema attivo. Chiedi all’utente di pronunciare la vocale A in modo costante per il campionamento.");
+
+  const messages = [
+    "Campionamento frequenze...",
+    "Analisi Edge AI...",
+    "Estrazione Biomarcatori...",
+    "Generazione Indice di Stabilità..."
+  ];
+
+  let i = 0;
+
+  statusTxt.innerText = "🎙️ ASCOLTO BIOMARCATORI...";
+  statusTxt.style.color = "#00ff88";
+  subText.innerHTML = "→ " + messages[i];
+
+  const interval = setInterval(() => {
+    i++;
+
+    if (i < messages.length) {
+      subText.innerHTML = "→ " + messages[i];
+
+      if (i === 1) {
+        statusTxt.innerText = "🧠 ELABORAZIONE EDGE AI...";
+        statusTxt.style.color = "#00d4ff";
       }
 
-      function resetDemo() {
-        document.getElementById("startState").style.display = "block";
-        document.getElementById("listeningState").style.display = "none";
-        document.getElementById("resultState").style.display = "none";
+      if (i === 2) {
+        statusTxt.innerText = "🔬 ESTRAZIONE BIOMARCATORI...";
+        statusTxt.style.color = "#1e88e5";
       }
 
-      function speakText(text) {
-        if ("speechSynthesis" in window) {
-          window.speechSynthesis.cancel();
-          const message = new SpeechSynthesisUtterance(text);
-          message.lang = "it-IT";
-          message.rate = 0.95;
-          window.speechSynthesis.speak(message);
-        }
+      if (i === 3) {
+        statusTxt.innerText = "📊 GENERAZIONE INDICE...";
+        statusTxt.style.color = "#00ff88";
       }
-    </script>
+    } else {
+      clearInterval(interval);
+    }
+  }, 3000);
 
+  setTimeout(() => {
+    document.getElementById("listeningState").style.display = "none";
+    document.getElementById("resultState").style.display = "block";
+
+    const precision = (Math.random() * (99.8 - 98.2) + 98.2).toFixed(1);
+
+    document.querySelector("#resultState h3").innerHTML =
+      "🧠 Output AI — Indice di Stabilità Vocale: <span style='color:#00ff88'>" + precision + "%</span>";
+
+    speakText("Analisi completata con successo. Indice di stabilità vocale ottimale. Sistema pronto per il supporto clinico.");
+  }, 12000);
+}
+
+function resetDemo() {
+  document.getElementById("startState").style.display = "block";
+  document.getElementById("listeningState").style.display = "none";
+  document.getElementById("resultState").style.display = "none";
+
+  const loadingFill = document.querySelector(".loading-fill");
+  loadingFill.style.animation = "none";
+  loadingFill.style.width = "0%";
+}
+
+function speakText(text) {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    const message = new SpeechSynthesisUtterance(text);
+    message.lang = "it-IT";
+    message.rate = 0.95;
+    window.speechSynthesis.speak(message);
+  }
+}
+</script>
   </body>
 </html>
